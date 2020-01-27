@@ -1,6 +1,7 @@
 import { remote } from 'electron';
 import { t } from 'i18next';
-import { createElement, useEffect, useRef, useState } from './reactiveUi';
+
+import { createElement, useEffect } from './reactiveUi';
 
 const createMenu = ({
 	appName = remote.app.name,
@@ -20,7 +21,7 @@ const createMenu = ({
 				...process.platform === 'darwin' ? [
 					{
 						label: t('menus.about', { appName }),
-						click: () => onAction({ type: 'about' })
+						click: () => onAction({ type: 'about' }),
 					},
 					{ type: 'separator' },
 					{ role: 'services' },
@@ -34,16 +35,16 @@ const createMenu = ({
 					{
 						label: t('menus.addNewServer'),
 						accelerator: 'CommandOrControl+N',
-						click: () => onAction({ type: 'add-new-server' })
+						click: () => onAction({ type: 'add-new-server' }),
 					},
 				] : [],
 				{ type: 'separator' },
 				{
 					label: t('menus.quit', { appName }),
 					accelerator: 'CommandOrControl+Q',
-					click: () => onAction({ type: 'quit' })
+					click: () => onAction({ type: 'quit' }),
 				},
-			]
+			],
 		},
 		{
 			label: t('menus.editMenu'),
@@ -79,7 +80,7 @@ const createMenu = ({
 					accelerator: 'CommandOrControl+A',
 					click: () => onAction({ type: 'select-all' }),
 				},
-			]
+			],
 		},
 		{
 			label: t('menus.viewMenu'),
@@ -159,7 +160,7 @@ const createMenu = ({
 					accelerator: 'CommandOrControl+-',
 					click: () => onAction({ type: 'zoom-out' }),
 				},
-			]
+			],
 		},
 		{
 			label: t('menus.windowMenu'),
@@ -208,7 +209,7 @@ const createMenu = ({
 					label: t('menus.close'),
 					accelerator: 'CommandOrControl+W',
 				},
-			]
+			],
 		},
 		{
 			label: t('menus.helpMenu'),
@@ -238,7 +239,7 @@ const createMenu = ({
 						click: () => onAction({ type: 'about' }),
 					},
 				] : [],
-			]
+			],
 		},
 	];
 
